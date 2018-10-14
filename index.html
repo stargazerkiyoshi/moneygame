@@ -1,0 +1,359 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/animate.css"/>
+		
+		<style type="text/css">
+			body{
+				margin: 0;
+				padding: 0;
+			}
+			.page1{
+				/*display: none;*/
+				width: 10rem;
+				height: 17.75rem;
+				background: url(img/bg1.jpg) 0 0/10rem 17.75rem no-repeat;
+				position: relative;
+			}
+			#tiaozhan{
+				width: 6.921875rem;
+				height: 2.390625rem;
+				position: absolute;
+				top: 2.3625rem;
+				left: 2.25625rem;
+			}
+			#shuqian{
+				width: 9.53125rem;
+				height: 3.0625rem;
+				position: absolute;
+				top: 4.5625rem;
+				left: 0.15625rem;
+			}
+			#start{
+				width: 4.6875rem;
+				height: 4.484375rem;
+				position: absolute;
+				top: 10rem;
+				left: 2.6rem;
+				animation: flash 3s infinite;
+			}
+			.btn{
+				width: 2.015625rem;
+				height: 1.421875rem;
+				border-radius: 0.125rem;
+				position: absolute;
+				bottom: 1.203125rem;
+			}
+			.btn1{
+				background: #b90c20;
+				left: 0.703125rem;
+			}
+			.btn2{
+				background: #e33145;
+				left: 2.859375rem;
+			}
+			.btn3{
+				background: #b90c20;
+				left: 5.03125rem;
+			}
+			.btn4{
+				background:#e33145;
+				left: 7.296875rem;
+			}
+			.btn img{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+			}
+			#paihang{
+				display: none;
+				width:7.375rem;
+				height: 9.90625rem;
+				background: url(img/paihang.png) 0 0/7.375rem 9.90625rem no-repeat;
+				position: absolute;
+				top:50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+			}
+			#guize{
+				display: none;
+				width:7.375rem;
+				height: 9.90625rem;
+				background: url(img/guize.png) 0 0/7.375rem 9.90625rem no-repeat;
+				position: absolute;
+				top:50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+			}
+			#jiangpin{
+				display: none;
+				width:7.375rem;
+				height: 9.90625rem;
+				background: url(img/jiangpin.png) 0 0/7.375rem 9.90625rem no-repeat;
+				position: absolute;
+				top:50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+			}
+			#shuoming{
+				display: none;
+				width:7.375rem;
+				height: 9.90625rem;
+				background: url(img/shuoming.png) 0 0/7.375rem 9.90625rem no-repeat;
+				position: absolute;
+				top:50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+			}
+			.close{
+				box-sizing: border-box;
+				border: solid red 2px;
+				width: 0.484375rem;
+				height: 0.484375rem;
+				border-radius: 50%;
+				color: red;
+				font-size: 30px;
+				text-align: center;
+				line-height: 0.484375rem;
+				position: absolute;
+				top: -0.484375rem;
+				right: 0;
+				background: white;
+			}
+			
+			.page2{
+				/*display: none;*/
+				width: 10rem;
+				height: 17.75rem;
+				background: url(img/bg2.png) 0 0/10rem 17.75rem no-repeat;
+				position: relative;
+				overflow: hidden;
+				font-size: 40px;
+				color: white;
+			}
+			.page2 img:last-child{
+				width: 10rem;
+				height: 2.46875rem;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}
+			.maoyeye{
+				width: 5.6875rem;
+				height: 11.859375rem;
+				position: absolute;
+				top: 10.546875rem;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+			#shou{
+				width: 3.671875rem;
+				height: 2.328125rem;
+				position: absolute;
+				right: 0.140625rem;
+				bottom: 3.515625rem;
+				animation: slideOutUp 1s infinite;
+			}
+			#score_bai{
+				position: absolute;
+				top:6.359375rem;
+				left: 2.59375rem;
+			}
+			#score_shi{
+				position: absolute;
+				top:6.359375rem;
+				left: 4.015625rem;
+			}
+			#score_ge{
+				position: absolute;
+				top:6.359375rem;
+				left: 5.40625rem;
+			}
+			#time{
+				color: ;
+				position: absolute;
+				top: 6.30625rem;
+				right:2.334375rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page1">
+			<img id="tiaozhan" src="img/tiaozhan.png" alt="" />
+			<img id="shuqian" src="img/shuqian.png" alt="" />
+			<img id="start" src="img/start.png" alt="" />
+			<div class="btn btn1">
+				<img src="img/text1.png"/>
+			</div>
+			<div class="btn btn2">
+				<img src="img/text2.png"/>
+			</div>
+			<div class="btn btn3">
+				<img src="img/text3.png"/>
+			</div>
+			<div class="btn btn4">
+				<img src="img/text4.png"/>
+			</div>
+			<div id="paihang">
+				<div class="close">
+					X
+				</div>
+			</div>
+			<div id="guize">
+				<div class="close">
+					X
+				</div>
+			</div>
+			<div id="jiangpin">
+				<div class="close">
+					X
+				</div>
+			</div>
+			<div id="shuoming">
+				<div class="close">
+					X
+				</div>
+			</div>
+		</div>
+		<div class="page2">
+			<!--<img class="maoyeye" src="img/maoyeye.png"/>-->
+			<span id="score_bai">
+				0
+			</span>
+			<span id="score_shi">
+				0
+			</span>
+			<span id="score_ge">
+				0
+			</span>
+			<span id="time">
+				30
+			</span>
+			<img id="shou" src="img/shou.png"/>
+			<img src="img/shitou.png"/>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var btns=document.getElementsByClassName("btn");
+		var paihang=document.getElementById("paihang")
+		var guize=document.getElementById("guize");
+		var jiangpin=document.getElementById("jiangpin");
+		var shuoming=document.getElementById("shuoming");
+		var closes=document.getElementsByClassName("close");
+		var start=document.getElementById("start");
+//		var maoyeye=document.getElementByClassName("maoyeye");
+		var shou=document.getElementById("shou");
+		var page1=document.getElementsByClassName("page1")[0];
+		var page2=document.getElementsByClassName("page2")[0];
+		var aniID;
+		var lastshow=paihang;
+		
+		start.onclick=function(){
+			page1.style.display="none";
+			page2.style.display="block";
+		}
+		function Money(){
+			this.img=new Image();
+			this.img.src="img/maoyeye.png";
+			this.img.className="maoyeye";
+			this.isSliding=false;
+			this.speed=50;
+		}
+		Money.prototype.show=function(dom){
+			page2.insertBefore(this.img,dom);
+		}
+		Money.prototype.slide=function(){
+			this.img.style.top=this.img.offsetTop-this.speed+"px";
+			this.img.style.width=this.img.offsetWidth-10+"px";
+			this.img.style.height=this.img.offsetHeight-5+"px";
+		}
+
+		var newMoney=new Money();
+		newMoney.show(shou);
+		btns[0].onclick=function(){
+			
+			
+			lastshow.style.display="none";
+			lastshow=paihang;
+		
+			paihang.style.display="block";
+			
+		}
+		btns[1].onclick=function(){
+			
+				lastshow.style.display="none";
+				lastshow=guize;
+				guize.style.display="block";
+			
+		}
+		btns[2].onclick=function(){
+			
+				lastshow.style.display="none";
+				lastshow=jiangpin;
+				jiangpin.style.display="block";
+			
+		}
+		btns[3].onclick=function(){
+			
+				lastshow.style.display="none";
+				lastshow=shuoming;
+				shuoming.style.display="block";
+			
+		}
+		
+		closes[0].onclick=function(){
+			paihang.style.display="none";
+		}
+		closes[1].onclick=function(){
+			guize.style.display="none";
+		}
+		closes[2].onclick=function(){
+			jiangpin.style.display="none";
+		}
+		closes[3].onclick=function(){
+			shuoming.style.display="none";	
+		}
+		addEvent(newMoney);
+		function addEvent(money){
+			money.img.addEventListener('touchstart',function(event){
+				var relativePosX=event.targetTouches[0].clientX-money.img.offsetLeft;
+				var relativePosY=event.targetTouches[0].clientY-money.img.offsetTop;
+				shou.style.display="none";
+				
+				money.img.addEventListener('touchmove', function(event) {
+					
+			     // 如果这个元素的位置内只有一个手指的话
+				    if (event.targetTouches.length == 1) {
+				　　　　	event.preventDefault();// 阻止浏览器默认事件，重要 
+				        var touch = event.targetTouches[0];
+				        console.log(touch);
+				        // 把元素放在手指所在的位置
+				        money.img.style.top = touch.clientY-relativePosY + 'px';
+				        if(money.img.offsetTop<650&&!money.isSliding){
+				        	money.isSliding=true;
+				        	requestAnimationFrame(slideOut);
+				        	
+				        }
+			        }
+				}, false);
+				var money1=new Money();
+				money1.show(money.img);
+				addEvent(money1);
+			});
+			
+			function slideOut(){
+				money.slide();
+				aniID=requestAnimationFrame(slideOut);
+				if(money.img.offsetTop<=-1000){
+	        		cancelAnimationFrame(aniID);
+	        		money.isSliding=false;
+	        	}
+			}
+		}
+		
+	</script>
+</html>
