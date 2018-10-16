@@ -4,8 +4,9 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+		<script src="js/swiper.js" type="text/javascript" charset="utf-8"></script>
 		<link rel="stylesheet" type="text/css" href="css/animate.css"/>
-		
+		<link rel="stylesheet" type="text/css" href="css/swiper.css"/>
 		<style type="text/css">
 			body{
 				margin: 0;
@@ -126,7 +127,7 @@
 			}
 			
 			.page2{
-				/*display: none;*/
+				display: none;
 				width: 10rem;
 				height: 17.75rem;
 				background: url(img/bg2.png) 0 0/10rem 17.75rem no-repeat;
@@ -135,7 +136,7 @@
 				font-size: 40px;
 				color: white;
 			}
-			.page2 img:last-child{
+			#shitou{
 				width: 10rem;
 				height: 2.46875rem;
 				position: absolute;
@@ -179,6 +180,21 @@
 				top: 6.30625rem;
 				right:2.334375rem;
 			}
+			.swiper-container{
+				width: 7.8125rem;
+				height: 2.34375rem;
+				position: absolute;
+				top: 2.6625rem;
+				left: 50%;
+				transform: translateX(-50%);
+				/*display: none;*/
+			}
+			.swiper-container img{
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+			
 		</style>
 	</head>
 	<body>
@@ -219,8 +235,21 @@
 				</div>
 			</div>
 		</div>
+	
 		<div class="page2">
+				<div class="swiper-container">
+		    <div class="swiper-wrapper">
+			    <div class="swiper-slide">
+			    	<img src="img/lunbo.png" alt="" />
+			    </div>
+			    <div class="swiper-slide">
+			    	<img src="img/lunbo1.png"/>
+			    </div>
+			    <!--<div class="swiper-slide">slider3</div>-->
+		    </div>
+		</div>
 			<!--<img class="maoyeye" src="img/maoyeye.png"/>-->
+			
 			<span id="score_bai">
 				0
 			</span>
@@ -234,7 +263,7 @@
 				30
 			</span>
 			<img id="shou" src="img/shou.png"/>
-			<img src="img/shitou.png"/>
+			<img id="shitou" src="img/shitou.png"/>
 		</div>
 	</body>
 	<script type="text/javascript">
@@ -244,17 +273,34 @@
 		var jiangpin=document.getElementById("jiangpin");
 		var shuoming=document.getElementById("shuoming");
 		var closes=document.getElementsByClassName("close");
-		var start=document.getElementById("start");
+		var startBtn=document.getElementById("start");
 //		var maoyeye=document.getElementByClassName("maoyeye");
 		var shou=document.getElementById("shou");
 		var page1=document.getElementsByClassName("page1")[0];
 		var page2=document.getElementsByClassName("page2")[0];
 		var aniID;
 		var lastshow=paihang;
-		
-		start.onclick=function(){
+		var scoreBai=document.getElementById("score_bai");
+		var scoreShi=document.getElementById("score_shi");
+		var scoreGe=document.getElementById("score_ge");
+		var time=document.getElementById("time");
+//		var swiper=document.getElementsByClassName('swiper-container')[0];
+		var score=0;
+		var start=false;
+		var end=false;
+		var timer;
+		var mySwiper;
+		startBtn.onclick=function(){
 			page1.style.display="none";
 			page2.style.display="block";
+//			mySwiper.classNames.push("show");
+//			swiper.style.display="block";
+			mySwiper = new Swiper('.swiper-container', {
+			direction:"vertical",
+			loop:true,
+			autoplay: true,//可选选项，自动滑动
+
+		})   //轮播图
 		}
 		function Money(){
 			this.img=new Image();
@@ -275,8 +321,7 @@
 		var newMoney=new Money();
 		newMoney.show(shou);
 		btns[0].onclick=function(){
-			
-			
+
 			lastshow.style.display="none";
 			lastshow=paihang;
 		
@@ -285,24 +330,22 @@
 		}
 		btns[1].onclick=function(){
 			
-				lastshow.style.display="none";
-				lastshow=guize;
-				guize.style.display="block";
+			lastshow.style.display="none";
+			lastshow=guize;
+			guize.style.display="block";
 			
 		}
 		btns[2].onclick=function(){
 			
-				lastshow.style.display="none";
-				lastshow=jiangpin;
-				jiangpin.style.display="block";
-			
+			lastshow.style.display="none";
+			lastshow=jiangpin;
+			jiangpin.style.display="block";
+		
 		}
 		btns[3].onclick=function(){
-			
-				lastshow.style.display="none";
-				lastshow=shuoming;
-				shuoming.style.display="block";
-			
+			lastshow.style.display="none";
+			lastshow=shuoming;
+			shuoming.style.display="block";
 		}
 		
 		closes[0].onclick=function(){
@@ -319,31 +362,50 @@
 		}
 		addEvent(newMoney);
 		function addEvent(money){
+			
 			money.img.addEventListener('touchstart',function(event){
-				var relativePosX=event.targetTouches[0].clientX-money.img.offsetLeft;
-				var relativePosY=event.targetTouches[0].clientY-money.img.offsetTop;
-				shou.style.display="none";
-				
-				money.img.addEventListener('touchmove', function(event) {
+				if(!end){
+					var relativePosX=event.targetTouches[0].clientX-money.img.offsetLeft;
+					var relativePosY=event.targetTouches[0].clientY-money.img.offsetTop;
+					shou.style.display="none";
 					
-			     // 如果这个元素的位置内只有一个手指的话
-				    if (event.targetTouches.length == 1) {
-				　　　　	event.preventDefault();// 阻止浏览器默认事件，重要 
-				        var touch = event.targetTouches[0];
-				        console.log(touch);
-				        // 把元素放在手指所在的位置
-				        money.img.style.top = touch.clientY-relativePosY + 'px';
-				        if(money.img.offsetTop<650&&!money.isSliding){
-				        	money.isSliding=true;
-				        	requestAnimationFrame(slideOut);
-				        	
+					money.img.addEventListener('touchmove', function(event) {
+						
+				     // 如果这个元素的位置内只有一个手指的话
+					    if (event.targetTouches.length == 1) {
+					　　　　	event.preventDefault();// 阻止浏览器默认事件，重要 
+					        var touch = event.targetTouches[0];
+					        console.log(touch);
+					        // 把元素放在手指所在的位置
+					        money.img.style.top = touch.clientY-relativePosY + 'px';
+					        if(money.img.offsetTop<650&&!money.isSliding){
+					        	score+=5;
+					        	showScore(score);
+					        	money.isSliding=true;
+					        	requestAnimationFrame(slideOut);
+					        }
 				        }
-			        }
-				}, false);
-				var money1=new Money();
-				money1.show(money.img);
-				addEvent(money1);
+					}, false);
+					
+					if(!start){
+						start=true;
+						timer=setInterval(function(){
+							
+							if(time.innerText==0){
+								clearInterval(timer);
+								alert("游戏结束");
+								end=true;
+								return;
+							}
+							time.innerText-=1;
+						},1000);
+					}
+					var money1=new Money();
+					money1.show(money.img);				
+					addEvent(money1);
+				}
 			});
+			
 			
 			function slideOut(){
 				money.slide();
@@ -353,6 +415,12 @@
 	        		money.isSliding=false;
 	        	}
 			}
+		}
+		
+		function showScore(score){
+			scoreGe.innerText=score%10;
+			scoreShi.innerText=(score-score%10)/10%10;
+			scoreBai.innerText=parseInt(score/100);
 		}
 		
 	</script>
